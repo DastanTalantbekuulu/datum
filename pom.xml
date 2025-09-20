@@ -21,52 +21,88 @@
         <module>core</module>
         <module>api</module>
         <module>support</module>
+        <module>security</module>
+        <module>service</module>
     </modules>
     <properties>
         <datum.version>0.0.1</datum.version>
         <java.version>25</java.version>
+        <spring-boot.version>3.5.5</spring-boot.version>
+        <lombok.version>1.18.40</lombok.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-web</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-validation</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springdoc</groupId>-->
+<!--                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
+<!--                <version>3.0.0-M1</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>org.projectlombok</groupId>-->
+<!--                <artifactId>lombok</artifactId>-->
+<!--                <optional>true</optional>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>org.javamoney</groupId>-->
+<!--                <artifactId>moneta</artifactId>-->
+<!--                <version>1.4.5</version>-->
+<!--                <type>pom</type>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>javax.money</groupId>-->
+<!--                <artifactId>money-api</artifactId>-->
+<!--                <version>1.1</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.javamoney.lib</groupId>-->
+<!--                <artifactId>javamoney-lib</artifactId>-->
+<!--                <version>1.1</version>-->
+<!--                <type>pom</type>-->
+<!--            </dependency>-->
+<!--    </dependencies>-->
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-validation</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>3.0.0-M1</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <optional>true</optional>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-            <dependency>
-                <groupId>org.javamoney</groupId>
-                <artifactId>moneta</artifactId>
-                <version>1.4.5</version>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>javax.money</groupId>
-                <artifactId>money-api</artifactId>
-                <version>1.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.javamoney.lib</groupId>
-                <artifactId>javamoney-lib</artifactId>
-                <version>1.1</version>
-                <type>pom</type>
-            </dependency>
-    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
