@@ -23,10 +23,12 @@
         <module>support</module>
         <module>security</module>
         <module>service</module>
+        <module>entity</module>
     </modules>
     <properties>
         <datum.version>0.0.1</datum.version>
         <java.version>25</java.version>
+        <grpc.version>1.75.0</grpc.version>
         <spring-boot.version>3.5.5</spring-boot.version>
         <lombok.version>1.18.40</lombok.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
