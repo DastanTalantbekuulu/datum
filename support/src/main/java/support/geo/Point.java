@@ -1,8 +1,8 @@
 package support.geo;
 
-import static kg.geo.exception.ExceptionMessages.LATITUDE_NULL;
-import static kg.geo.exception.ExceptionMessages.LONGITUDE_NULL;
-import static kg.geo.internal.Objects.failIf;
+import static support.geo.exception.ExceptionMessages.LATITUDE_NULL;
+import static support.geo.exception.ExceptionMessages.LONGITUDE_NULL;
+import static support.geo.internal.Objects.failIf;
 
 /**
  * This class is a thin wrapper of a {@linkplain Latitude} and {@linkplain Longitude}.

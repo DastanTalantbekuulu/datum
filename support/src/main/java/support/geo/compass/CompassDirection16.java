@@ -1,12 +1,14 @@
 package support.geo.compass;
 
+import support.geo.internal.EnumHelper;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
-import kg.geo.internal.EnumHelper;
+
 import static java.math.BigDecimal.ZERO;
-import static kg.geo.exception.ExceptionMessages.BEARING_OUT_OF_RANGE;
-import static kg.geo.internal.Objects.failIf;
+import static support.geo.exception.ExceptionMessages.BEARING_OUT_OF_RANGE;
+import static support.geo.internal.Objects.failIf;
 
 public enum CompassDirection16 implements CompassDirection {
     NORTH("N", "348.75", "0.00", "11.24"),

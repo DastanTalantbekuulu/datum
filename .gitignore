@@ -27,5 +27,4 @@ replay_pid*
 .vscode
 *~
 .class
-*.iml
 core/.env

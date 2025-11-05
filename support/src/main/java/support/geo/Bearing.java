@@ -1,13 +1,16 @@
 package support.geo;
 
-import java.math.BigDecimal;
-import kg.geo.compass.CompassDirection;
 import lombok.Getter;
 import lombok.Setter;
+import support.geo.compass.CompassDirection;
+
+import java.math.BigDecimal;
+
 import static java.math.BigDecimal.ZERO;
-import static kg.geo.exception.ExceptionMessages.BEARING_NULL;
-import static kg.geo.exception.ExceptionMessages.BEARING_OUT_OF_RANGE;
-import static kg.geo.internal.Objects.failIf;
+import static support.geo.exception.ExceptionMessages.BEARING_NULL;
+import static support.geo.exception.ExceptionMessages.BEARING_OUT_OF_RANGE;
+import static support.geo.internal.Objects.failIf;
+
 
 /**
  * A class containing an exact bearing and a mapping of the bearing to a general compass direction

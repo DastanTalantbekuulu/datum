@@ -1,10 +1,13 @@
 package support.geo.calculator;
 
+import support.geo.Point;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import kg.geo.Point;
-import static kg.geo.internal.Objects.failIf;
+
+import static support.geo.internal.Objects.failIf;
+
 
 public class DistanceCalculator {
 

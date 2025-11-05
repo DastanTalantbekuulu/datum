@@ -1,12 +1,14 @@
 package support.geo;
 
-import kg.geo.internal.GeographicCoordinate;
-import kg.geo.internal.LatLonDirection;
-import static kg.geo.Latitude.Direction.SOUTH;
-import static kg.geo.exception.ExceptionMessages.DIRECTION_CANT_BE_NEITHER;
-import static kg.geo.exception.ExceptionMessages.DIRECTION_NULL;
-import static kg.geo.exception.ExceptionMessages.LAT_LON_RANGE_ERROR;
-import static kg.geo.internal.Objects.failIf;
+
+import support.geo.internal.GeographicCoordinate;
+import support.geo.internal.LatLonDirection;
+
+import static support.geo.Latitude.Direction.SOUTH;
+import static support.geo.exception.ExceptionMessages.DIRECTION_CANT_BE_NEITHER;
+import static support.geo.exception.ExceptionMessages.DIRECTION_NULL;
+import static support.geo.exception.ExceptionMessages.LAT_LON_RANGE_ERROR;
+import static support.geo.internal.Objects.failIf;
 
 /**
  * Lines of latitude run parallel to the Equator (perpendicular to the Prime Meridian).  Latitude denotes whether a

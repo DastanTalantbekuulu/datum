@@ -3,7 +3,8 @@ package support.geo.internal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
-import static kg.geo.internal.Objects.failIf;
+
+import static support.geo.internal.Objects.failIf;
 
 public class EnumHelper {
 

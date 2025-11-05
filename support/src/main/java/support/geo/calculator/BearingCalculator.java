@@ -1,19 +1,21 @@
 package support.geo.calculator;
 
+import support.geo.Bearing;
+import support.geo.Point;
+import support.geo.compass.CompassDirection;
+import support.geo.compass.CompassDirection16;
+import support.geo.compass.CompassDirection32;
+import support.geo.compass.CompassDirection8;
+
 import java.math.BigDecimal;
-import kg.geo.Bearing;
-import kg.geo.Point;
-import kg.geo.compass.CompassDirection;
-import kg.geo.compass.CompassDirection16;
-import kg.geo.compass.CompassDirection32;
-import kg.geo.compass.CompassDirection8;
+
 import static java.math.BigDecimal.ZERO;
-import static kg.geo.exception.ExceptionMessages.BEARING_NULL;
-import static kg.geo.exception.ExceptionMessages.BEARING_OUT_OF_RANGE;
-import static kg.geo.exception.ExceptionMessages.BEARING_TO_NULL;
-import static kg.geo.exception.ExceptionMessages.COMPASS_TYPE_NULL;
-import static kg.geo.exception.ExceptionMessages.STARTING_POINT_NULL;
-import static kg.geo.internal.Objects.failIf;
+import static support.geo.exception.ExceptionMessages.BEARING_NULL;
+import static support.geo.exception.ExceptionMessages.BEARING_OUT_OF_RANGE;
+import static support.geo.exception.ExceptionMessages.BEARING_TO_NULL;
+import static support.geo.exception.ExceptionMessages.COMPASS_TYPE_NULL;
+import static support.geo.exception.ExceptionMessages.STARTING_POINT_NULL;
+import static support.geo.internal.Objects.failIf;
 
 
 /**
