@@ -1,0 +1,15 @@
+
+{
+  "_code": "Error: does not match validation @GenderCode and @Size(max=1)",
+  "code": "MALE",
+  "i18n": {
+    "en": "Male",
+    "kg": "Эркек",
+    "ru": "Мужской"
+  },
+  "_shortI18n": "Error: missing keys 'kg' and 'ru'",
+  "shortI18n": {
+    "en": "M",
+    "ru": "М"
+  }
+}

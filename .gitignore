@@ -28,3 +28,9 @@ replay_pid*
 *~
 .class
 core/.env
+.ai
+
+target
+jooq
+#frontend/src/main/frontend/node_modules
+node_modules

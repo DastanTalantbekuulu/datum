@@ -1,0 +1,9 @@
+{
+  "_type": "ERROR: Field must not be blank (@NotBlank)",
+  "type": "",
+  "_i18n": "ERROR: Violates @ContainsLanguages (missing 'kg') and @Size(min = 3) (only 2 entries)",
+  "i18n": {
+    "en": "Home",
+    "ru": "Дом"
+  }
+}

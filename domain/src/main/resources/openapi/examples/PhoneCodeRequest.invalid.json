@@ -1,0 +1,13 @@
+{
+  "_countryId": "ERROR: Field cannot be null (@NotNull)",
+  "countryId": null,
+  "_prefix": "ERROR: Field cannot be empty (@NotBlank)",
+  "prefix": "",
+  "_mask": "ERROR: Length exceeds 50 characters (@Size)",
+  "mask": "This mask is intentionally way too long and exceeds the fifty character limit set by the validation constraint for this field in the request payload",
+  "_emoji": "ERROR: Length exceeds 5 characters (@Size)",
+  "emoji": "this_is_not_an_emoji",
+  "regex": "^\\+996\\d{9}$",
+  "_isMain": "NOTE: Validation will pass because Boolean can be null. Compact constructor will set value to true",
+  "isMain": null
+}

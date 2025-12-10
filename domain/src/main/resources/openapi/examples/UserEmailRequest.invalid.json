@@ -1,0 +1,14 @@
+{
+  "_email": "ERROR: Violates @Pattern because missing '@' symbol",
+  "email": "jane.doe.example.org",
+  "_contactTypeCode": "ERROR: Length exceeds 20 characters (@Size)",
+  "contactTypeCode": "A_VERY_LONG_CONTACT_TYPE_CODE",
+  "_isPrimary": "ERROR: Incompatible type. Expected Boolean, not String",
+  "isPrimary": "yes"
+}
+{
+  "email": "valid@email.com",
+  "contactTypeCode": "WORK",
+  "_isPrimary": "NOTE: There will be NO validation error",
+  "isPrimary": null
+}

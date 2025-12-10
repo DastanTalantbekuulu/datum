@@ -1,0 +1,13 @@
+{
+  "_isoAlpha2": "Error: does not match pattern [A-Z]{2}",
+  "isoAlpha2": "kz",
+  "_isoAlpha3": "Error: does not match pattern [A-Z]{3}",
+  "isoAlpha3": "kaz",
+  "_isActive": "Error: cannot be null",
+  "isActive": null,
+  "_i18n": "Error: missing key 'kg'",
+  "i18n": {
+    "en": "Kazakhstan",
+    "ru": "Казахстан"
+  }
+}

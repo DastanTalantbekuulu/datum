@@ -1,0 +1,29 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/datum
+    username: postgres
+    password: postgres
+  security:
+    user:
+      name: das
+      password: das
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  jackson:
+    time-zone: UTC # Настройка формата JSON (чтобы фронтенд получал '2025-12-06T12:00:00Z')
+springdoc:
+  swagger-ui:
+    enabled: false
+    path: /api
+  api-docs:
+    enabled: true

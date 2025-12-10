@@ -1,0 +1,10 @@
+{
+  "_code": "Error: does not match pattern [A-Z_]+",
+  "code": "face_iso",
+  "_description": "Error: description too long",
+  "description": "A description that is way too long and exceeds the maximum length of two hundred and fifty-five characters allowed by the database schema for this particular field which is the description column in the photo_type table.",
+  "i18n": {
+    "_en": "Error: missing keys 'kg' and 'ru'",
+    "en": "Face (ISO)"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "_phone": "ERROR: Violates @Pattern because it doesn't start with '+'",
+  "phone": "996555123456",
+  "_contactTypeCode": "ERROR: Length exceeds 20 characters (@Size)",
+  "contactTypeCode": "A_VERY_LONG_CONTACT_TYPE_CODE_EXCEEDING_LIMIT",
+  "_isPrimary": "ERROR: Incompatible type. Expected Boolean, not String",
+  "isPrimary": "yes"
+}

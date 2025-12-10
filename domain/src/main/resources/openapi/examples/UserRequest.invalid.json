@@ -1,0 +1,12 @@
+{
+  "_externalId": "ERROR: Does not match UUID format (@Pattern)",
+  "externalId": "this-is-not-a-valid-uuid",
+  "_username": "ERROR: Field cannot be empty (@NotBlank)",
+  "username": "",
+  "_password": "ERROR: Length exceeds 1024 characters (@Size)",
+  "password": "This password is intentionally way too long to exceed the maximum allowed length of 1024 characters for the password column in the database schema and should therefore trigger a validation error.",
+  "_enabled": "ERROR: Field cannot be null (@NotNull)",
+  "enabled": null,
+  "_locked": "ERROR: Field cannot be null (@NotNull)",
+  "locked": null
+}

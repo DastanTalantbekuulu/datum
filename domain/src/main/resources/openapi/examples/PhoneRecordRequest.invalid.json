@@ -1,0 +1,8 @@
+{
+  "_number": "ERROR: Violates @Pattern because it doesn't start with '+'",
+  "number": "996555123456",
+  "_hasWhatsapp": "ERROR: Incompatible type. Expected Boolean, not String",
+  "hasWhatsapp": "yes",
+  "_hasTelegram": "NOTE: There will be NO validation error. Compact constructor will set value to false",
+  "hasTelegram": null
+}

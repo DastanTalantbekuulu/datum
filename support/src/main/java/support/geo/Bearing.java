@@ -28,7 +28,7 @@ public class Bearing<T extends CompassDirection> {
     }
 
     public Bearing(final T compassDirection, final BigDecimal bearing) {
-        setCompassDirection(compassDirection);
+        compassDirection(compassDirection);
         setBearing(bearing);
     }
 

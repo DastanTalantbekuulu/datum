@@ -1,0 +1,13 @@
+{
+  "code": "kgs",
+  "_code": "Error: does not match pattern [A-Z]{3}",
+  "symbol": "",
+  "_symbol": "Error: cannot be empty",
+  "decimals": -1,
+  "_decimals": "Error: cannot be negative",
+  "_i18n": "Error: missing key 'kg'",
+  "i18n": {
+    "en": "Kyrgyzstani Som",
+    "ru": "Кыргызский сом"
+  }
+}

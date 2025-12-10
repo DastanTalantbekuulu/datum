@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.6</version>
+        <version>4.0.0</version>
     </parent>
 
     <groupId>kg.management</groupId>
@@ -18,80 +18,214 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>core</module>
         <module>api</module>
-        <module>support</module>
+        <module>domain</module>
+        <module>frontend</module>
         <module>security</module>
         <module>service</module>
-        <module>entity</module>
+        <module>support</module>
     </modules>
     <properties>
-        <datum.version>0.0.1</datum.version>
+        <project.version>0.0.1</project.version>
         <java.version>25</java.version>
-        <grpc.version>1.75.0</grpc.version>
-        <spring-boot.version>3.5.5</spring-boot.version>
-        <lombok.version>1.18.40</lombok.version>
+
+        <db.driver>org.postgresql.Driver</db.driver>
+        <db.url>jdbc:postgresql://localhost:5432/datum</db.url>
+        <db.username>postgres</db.username>
+        <db.password>postgres</db.password>
+
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version> <!-- Sep 22, 2025 -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring-boot.version>4.0.0</spring-boot.version> <!-- Nov 20, 2025 -->
+        <hibernate-envers.version>7.1.11.Final</hibernate-envers.version> <!-- Dec 01, 2025 -->
+
+        <commons-lang3.version>3.20.0</commons-lang3.version> <!-- Nov 12, 2025 -->
+
+        <jooq.version>3.20.10</jooq.version> <!-- Dec 5, 2025 -->
+        <jooq-codegen.version>3.20.9</jooq-codegen.version> <!-- Nov 11, 2025 -->
+        <mapstruct.extensions.spring.version>2.0.0</mapstruct.extensions.spring.version> <!-- Nov 18, 2025 -->
+
+        <openfga-starter.version>0.2.0</openfga-starter.version> <!-- Mar 18, 2025 -->
+        <lombok.version>1.18.42</lombok.version> <!-- Sep 18, 2025 -->
+        <javamoney.version>1.4.5</javamoney.version> <!-- Mar 22, 2025 -->
+
+        <grpc.version>1.77.0</grpc.version> <!-- Nov 18, 2025 -->
+        <jsonwebtoken.version>0.13.0</jsonwebtoken.version> <!-- Aug 20, 2025 -->
+
+        <authzed.version>1.5.4</authzed.version> <!-- Oct 23, 2025 -->
+        <openfga.version>0.9.3</openfga.version> <!-- Nov 10, 2025 -->
+
+        <icu.version>78.1</icu.version> <!-- Oct 30, 2025 -->
+        <icu-localespi.version>77.1</icu-localespi.version> <!-- Mar 13, 2025 -->
+
+        <springdoc.version>3.0.0</springdoc.version> <!-- Nov 21, 2025 -->
+
+        <spring-restdocs.version>4.0.0</spring-restdocs.version><!-- Nov 19, 2025 -->
+        <asciidoctorj.version>3.2.0</asciidoctorj.version> <!-- Mar 22, 2025 -->
+        <asciidoctorj.diagram.version>3.1.0</asciidoctorj.diagram.version> <!-- Nov 26, 2025 -->
+
+        <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version> <!-- Sep 10, 2025 -->
+
+        <postgresql.version>42.7.8</postgresql.version> <!-- Sep 18, 2025 -->
     </properties>
-<!--        <dependencies>-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-web</artifactId>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-validation</artifactId>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.springdoc</groupId>-->
-<!--                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
-<!--                <version>3.0.0-M1</version>-->
-<!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>org.projectlombok</groupId>-->
-<!--                <artifactId>lombok</artifactId>-->
-<!--                <optional>true</optional>-->
-<!--            </dependency>-->
-
-<!--            <dependency>-->
-<!--                <groupId>org.javamoney</groupId>-->
-<!--                <artifactId>moneta</artifactId>-->
-<!--                <version>1.4.5</version>-->
-<!--                <type>pom</type>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>javax.money</groupId>-->
-<!--                <artifactId>money-api</artifactId>-->
-<!--                <version>1.1</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.javamoney.lib</groupId>-->
-<!--                <artifactId>javamoney-lib</artifactId>-->
-<!--                <version>1.1</version>-->
-<!--                <type>pom</type>-->
-<!--            </dependency>-->
-<!--    </dependencies>-->
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.restdocs</groupId>
+                <artifactId>spring-restdocs-mockmvc</artifactId>
+                <version>${spring-restdocs.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.restdocs</groupId>
+                <artifactId>spring-restdocs-asciidoctor</artifactId>
+                <version>${spring-restdocs.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq</artifactId>
+                <version>${jooq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-meta</artifactId>
+                <version>${jooq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen</artifactId>
+                <version>${jooq-codegen.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct.extensions.spring</groupId>
+                <artifactId>mapstruct-spring-annotations</artifactId>
+                <version>${mapstruct.extensions.spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct.extensions.spring</groupId>
+                <artifactId>mapstruct-spring-extensions</artifactId>
+                <version>${mapstruct.extensions.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jsonwebtoken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jsonwebtoken.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jsonwebtoken.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javamoney.moneta</groupId>
+                <artifactId>moneta-convert-parent</artifactId>
+                <version>${javamoney.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javamoney.moneta</groupId>
+                <artifactId>moneta-core</artifactId>
+                <version>${javamoney.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javamoney.moneta</groupId>
+                <artifactId>moneta-convert</artifactId>
+                <version>${javamoney.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javamoney.moneta</groupId>
+                <artifactId>moneta-convert-imf</artifactId>
+                <version>${javamoney.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javamoney.moneta</groupId>
+                <artifactId>moneta-convert-ecb</artifactId>
+                <version>${javamoney.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-api</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-protobuf</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-stub</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.authzed.api</groupId>
+                <artifactId>authzed</artifactId>
+                <version>${authzed.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.openfga</groupId>
+                <artifactId>openfga-spring-boot-starter</artifactId>
+                <version>${openfga-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.openfga</groupId>
+                <artifactId>openfga-sdk</artifactId>
+                <version>${openfga.version}</version>
+            </dependency>
+
+            <!-- International Components for Unicode for Java (ICU4J) is a mature, widely used Java library providing Unicode and Globalization support-->
+            <dependency>
+                <groupId>com.ibm.icu</groupId>
+                <artifactId>icu4j</artifactId>
+                <version>${icu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ibm.icu</groupId>
+                <artifactId>icu4j-charset</artifactId>
+                <version>${icu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ibm.icu</groupId>
+                <artifactId>icu4j-localespi</artifactId>
+                <version>${icu-localespi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -103,6 +237,57 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.mapstruct.extensions.spring</groupId>
+                                <artifactId>mapstruct-spring-extensions</artifactId>
+                                <version>${mapstruct.extensions.spring.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jooq</groupId>
+                    <artifactId>jooq-codegen-maven</artifactId>
+                    <version>${jooq.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.postgresql</groupId>
+                            <artifactId>postgresql</artifactId>
+                            <version>${postgresql.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>

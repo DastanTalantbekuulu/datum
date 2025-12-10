@@ -1,0 +1,12 @@
+{
+  "countryId": 1,
+  "regionId": 1,
+  "latitude": "42.87462100",
+  "longitude": "74.56983200",
+  "isActive": true,
+  "i18n": {
+    "en": "Bishkek",
+    "kg": "Бишкек",
+    "ru": "Бишкек"
+  }
+}

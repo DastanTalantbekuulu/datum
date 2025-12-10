@@ -1,0 +1,9 @@
+{
+  "userId": 101,
+  "lastName": "Ivanov",
+  "firstName": "Ivan",
+  "middleName": "Ivanovich",
+  "birthDate": "1990-05-15",
+  "gender": "M",
+  "citizenshipId": 117
+}

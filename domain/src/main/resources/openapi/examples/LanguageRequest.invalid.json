@@ -1,0 +1,10 @@
+{
+  "_language": "Error: does not match pattern [a-z]{2}",
+  "language": "french",
+  "_nativeName": "Error: cannot be empty",
+  "nativeName": "",
+  "i18n": {
+    "_en": "Error: missing keys 'kg' and 'ru'",
+    "en": "French"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "_code": "Error: does not match pattern [A-Z_]+",
+  "code": "Brother",
+  "i18n": {
+    "_en": "Error: missing keys 'kg' and 'ru'",
+    "en": "Brother",
+    "ru": "Брат"
+  }
+}

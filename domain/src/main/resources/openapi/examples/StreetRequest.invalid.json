@@ -1,0 +1,11 @@
+{
+  "_cityId": "Error: cannot be null",
+  "cityId": null,
+  "_externalCode": "Error: too long",
+  "externalCode": "A very long external code that definitely exceeds the one hundred character limit set by the database schema",
+  "_i18n": "Error: missing keys 'kg'",
+  "i18n": {
+    "en": "Manas Avenue",
+    "ru": "Проспект Манаса"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "_countryId": "Error: cannot be null",
+  "countryId": null,
+  "_code": "Error: too long",
+  "code": "A very long region code that exceeds the twenty character limit",
+  "_i18n": "Error: missing keys 'kg'",
+  "i18n": {
+    "en": "Chuy Region",
+    "ru": "Чуйская область"
+  }
+}

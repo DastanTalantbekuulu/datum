@@ -1,0 +1,13 @@
+{
+  "role": "PROJECT_MANAGER",
+  "i18n": {
+    "en": "Project Manager",
+    "kg": "Проект менеджер",
+    "ru": "Менеджер проекта"
+  },
+  "descriptionI18n": {
+    "en": "A user who can manage projects",
+    "kg": "Долбоорлорду башкара алган колдонуучу",
+    "ru": "Пользователь, который может управлять проектами"
+  }
+}
