@@ -25,11 +25,6 @@
             <artifactId>support</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>kg.management</groupId>
-            <artifactId>frontend</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

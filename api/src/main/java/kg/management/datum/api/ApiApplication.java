@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = "kg.management.datum.domain")
+@ComponentScan(basePackages = {"kg.management.datum.domain", "kg.management.datum.api"})
 @EntityScan(basePackages = "kg.management.datum.domain.entity")
 @SpringBootApplication
 public class ApiApplication {
