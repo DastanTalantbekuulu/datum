@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(AppException.class)
     public ResponseEntity<AppResponse<Void>> handleBusinessException(AppException ex) {
-        AppResponse<Void> response = responseFactory.createError(ex.error());
+        AppResponse<Void> response = responseFactory.createError(ex.getError());
         return ResponseEntity.badRequest().body(response);
     }
 

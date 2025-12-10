@@ -57,12 +57,12 @@ public abstract class AbstractAuditFull<PK> extends  AbstractAuditMutable<PK> im
 
     @Override
     public Optional<Instant> getCreatedDate() {
-        return Optional.ofNullable(createdAt());
+        return Optional.ofNullable(getCreatedAt());
     }
 
     @Override
     public void setCreatedDate(Instant creationDate) {
-        createdAt(creationDate);
+        setCreatedAt(creationDate);
     }
 
     @Override
@@ -77,11 +77,11 @@ public abstract class AbstractAuditFull<PK> extends  AbstractAuditMutable<PK> im
 
     @Override
     public Optional<Instant> getLastModifiedDate() {
-        return Optional.ofNullable(updatedAt());
+        return Optional.ofNullable(getUpdatedAt());
     }
 
     @Override
     public void setLastModifiedDate(Instant lastModifiedDate) {
-        updatedAt(lastModifiedDate);
+        setUpdatedAt(lastModifiedDate);
     }
 }

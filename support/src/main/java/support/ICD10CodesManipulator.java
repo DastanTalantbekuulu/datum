@@ -80,7 +80,7 @@ public class ICD10CodesManipulator {
     }
 
     private void populateFlatLists(ICDNode node) {
-        String name = node.name();
+        String name = node.getName();
         allCodesList.add(name);
 
         String nameNoDot = (name.length() > 4 && name.charAt(3) == '.')
@@ -91,7 +91,7 @@ public class ICD10CodesManipulator {
         String codeWithDot = addDotToCode(name);
         codeToIndexMap.put(codeWithDot, allCodesList.size() - 1);
 
-        for (ICDNode child : node.children()) {
+        for (ICDNode child : node.getChildren()) {
             populateFlatLists(child);
         }
     }
@@ -158,22 +158,22 @@ public class ICD10CodesManipulator {
 
     public boolean isChapter(String code) {
         ICDNode node = getNode(code);
-        return node != null && "chapter".equals(node.type());
+        return node != null && "chapter".equals(node.getType());
     }
 
     public boolean isBlock(String code) {
         ICDNode node = getNode(code);
-        return node != null && "block".equals(node.type());
+        return node != null && "block".equals(node.getType());
     }
 
     public boolean isCategory(String code) {
         ICDNode node = getNode(code);
-        return node != null && "category".equals(node.type());
+        return node != null && "category".equals(node.getType());
     }
 
     public boolean isSubcategory(String code) {
         ICDNode node = getNode(code);
-        return node != null && "subcategory".equals(node.type());
+        return node != null && "subcategory".equals(node.getType());
     }
 
     public boolean isChapterOrBlock(String code) {
@@ -186,34 +186,34 @@ public class ICD10CodesManipulator {
 
     public String getDescription(String code) {
         validateCode(code);
-        return getNode(code).description();
+        return getNode(code).getDescription();
     }
 
     public String getParent(String code) {
         validateCode(code);
-        ICDNode parent = getNode(code).parent();
-        return parent == null ? "" : parent.name();
+        ICDNode parent = getNode(code).getParent();
+        return parent == null ? "" : parent.getName();
     }
 
     public List<String> getChildren(String code) {
         validateCode(code);
-        return getNode(code).children().stream()
-                .map(ICDNode::name)
+        return getNode(code).getChildren().stream()
+                .map(ICDNode::getName)
                 .collect(Collectors.toList());
     }
 
     public boolean isLeaf(String code) {
         validateCode(code);
-        return getNode(code).children().isEmpty();
+        return getNode(code).getChildren().isEmpty();
     }
 
     public List<String> getAncestors(String code) {
         validateCode(code);
         List<String> result = new ArrayList<>();
-        ICDNode node = getNode(code).parent();
+        ICDNode node = getNode(code).getParent();
         while (node != null) {
-            result.add(node.name());
-            node = node.parent();
+            result.add(node.getName());
+            node = node.getParent();
         }
         return result;
     }
@@ -226,8 +226,8 @@ public class ICD10CodesManipulator {
     }
 
     private void collectDescendants(ICDNode node, List<String> result) {
-        for (ICDNode child : node.children()) {
-            result.add(child.name());
+        for (ICDNode child : node.getChildren()) {
+            result.add(child.getName());
             collectDescendants(child, result);
         }
     }
@@ -239,11 +239,11 @@ public class ICD10CodesManipulator {
         ICDNode node = getNode(descendant);
         String ancestorCode = addDotToCode(ancestor);
 
-        while (node.parent() != null) {
-            if (node.parent().name().equals(ancestorCode)) {
+        while (node.getParent() != null) {
+            if (node.getParent().getName().equals(ancestorCode)) {
                 return true;
             }
-            node = node.parent();
+            node = node.getParent();
         }
         return false;
     }
@@ -260,16 +260,16 @@ public class ICD10CodesManipulator {
         Set<String> ancestorsA = new HashSet<>();
         ICDNode nodeA = getNode(codeA);
         while (nodeA != null) {
-            ancestorsA.add(nodeA.name());
-            nodeA = nodeA.parent();
+            ancestorsA.add(nodeA.getName());
+            nodeA = nodeA.getParent();
         }
 
         ICDNode nodeB = getNode(codeB);
         while (nodeB != null) {
-            if (ancestorsA.contains(nodeB.name())) {
-                return nodeB.name();
+            if (ancestorsA.contains(nodeB.getName())) {
+                return nodeB.getName();
             }
-            nodeB = nodeB.parent();
+            nodeB = nodeB.getParent();
         }
 
         return "";

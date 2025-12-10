@@ -28,8 +28,8 @@ public class AppResponse<T> {
     public static <T> AppResponse<T> success(T data) {
         return AppResponse.<T>builder()
                 .success(true)
-                .code(StandardCode.SUCCESS.code())
-                .message(CommonError.SUCCESS.messageKey())
+                .code(StandardCode.SUCCESS.getCode())
+                .message(CommonError.SUCCESS.getMessageKey())
                 .data(data)
                 .build();
     }

@@ -10,25 +10,25 @@ public abstract class AppException extends RuntimeException {
     private final Object[] args;
 
     public AppException(AppError error) {
-        super(error.messageKey());
+        super(error.getMessageKey());
         this.error = error;
         args = null;
     }
 
     public AppException(AppError error, Object... args) {
-        super(error.messageKey());
+        super(error.getMessageKey());
         this.error = error;
         this.args = args;
     }
 
     public AppException(AppError error, Throwable cause) {
-        super(error.messageKey(), cause);
+        super(error.getMessageKey(), cause);
         this.error = error;
         args = null;
     }
 
     public AppException(AppError error, Throwable cause, Object... args) {
-        super(error.messageKey(), cause);
+        super(error.getMessageKey(), cause);
         this.error = error;
         this.args = args;
     }

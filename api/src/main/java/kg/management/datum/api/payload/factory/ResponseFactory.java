@@ -21,22 +21,22 @@ public class ResponseFactory {
     public <T> AppResponse<T> success(T data) {
         return AppResponse.<T>builder()
                 .success(true)
-                .code(StandardCode.SUCCESS.code())
-                .message(getMessage(CommonError.SUCCESS.messageKey()))
+                .code(StandardCode.SUCCESS.getCode())
+                .message(getMessage(CommonError.SUCCESS.getMessageKey()))
                 .data(data)
                 .build();
     }
 
     public AppResponse<Void> createError(AppError error, Object... args) {
         String localizedMessage = messageSource.getMessage(
-                error.messageKey(),
+                error.getMessageKey(),
                 args,
-                error.messageKey(),
+                error.getMessageKey(),
                 LocaleContextHolder.getLocale());
 
         return AppResponse.<Void>builder()
                 .success(false)
-                .code(error.code())
+                .code(error.getCode())
                 .message(localizedMessage)
                 .build();
     }
@@ -44,8 +44,8 @@ public class ResponseFactory {
     public AppResponse<Void> createValidationError(List<ValidationError> errors) {
         return AppResponse.<Void>builder()
                 .success(false)
-                .code(CommonError.VALIDATION_ERROR.code())
-                .message(getMessage(CommonError.VALIDATION_ERROR.messageKey()))
+                .code(CommonError.VALIDATION_ERROR.getCode())
+                .message(getMessage(CommonError.VALIDATION_ERROR.getMessageKey()))
                 .errors(errors)
                 .build();
     }
