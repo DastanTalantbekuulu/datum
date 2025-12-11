@@ -1,10 +1,11 @@
 package kg.management.datum.domain.entity.person;
 
+import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.CheckConstraint;
 import jakarta.persistence.Column;
+import jakarta.persistence.Converter;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import kg.management.datum.domain.entity.base.RichLocalizedEntity;
 import lombok.Getter;
@@ -21,9 +22,10 @@ import org.hibernate.envers.Audited;
 @NoArgsConstructor
 @SuperBuilder
 @Table(name = "gender")
-@AttributeOverride(name = "id", column = @Column(name = "code", length = 1, nullable = false, columnDefinition = "char(1) CHECK (code IN ('M', 'F', 'X'))"))
+@AttributeOverride(name = "id", column = @Column(name = "code", nullable = false,
+        check = @CheckConstraint(constraint = "code IN ('M', 'F', 'X')")))
 @AttributeOverride(name = "extendI18n", column = @Column(name = "short_i18n", columnDefinition = "jsonb", nullable = false))
-public class Gender extends RichLocalizedEntity<Gender.Code> {
+public class Gender extends RichLocalizedEntity<String> {
 
     @Getter
     @RequiredArgsConstructor
@@ -31,18 +33,30 @@ public class Gender extends RichLocalizedEntity<Gender.Code> {
         M(1, 'M'),
         F(2, 'F'),
         X(3, 'X');
+
         private final int code;
         private final char value;
+
+        public static Code fromValue(String value) {
+            if (value == null) return null;
+            try {
+                return Code.valueOf(value);
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
     }
 
-    @Override
-    @Enumerated(EnumType.STRING)
-    public Code getId() {
-        return super.getId();
-    }
+    @Converter(autoApply = true)
+    public static class CodeConverter implements AttributeConverter<Code, String> {
+        @Override
+        public String convertToDatabaseColumn(Code attribute) {
+            return attribute == null ? null : attribute.name();
+        }
 
-    @Override
-    public void setId(Code id) {
-        super.setId(id);
+        @Override
+        public Code convertToEntityAttribute(String dbData) {
+            return Code.fromValue(dbData);
+        }
     }
 }

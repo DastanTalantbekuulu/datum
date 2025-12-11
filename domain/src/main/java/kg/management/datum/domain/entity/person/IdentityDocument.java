@@ -1,7 +1,9 @@
 package kg.management.datum.domain.entity.person;
 
 
+import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Converter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -43,17 +45,6 @@ import java.time.LocalDate;
 @SQLDelete(sql = "UPDATE identity_document SET deleted_at = current_timestamp WHERE id = ?")
 @SQLRestriction("deleted_at IS NULL")
 public class IdentityDocument extends LifecycleIdentityEntity {
-
-    @Getter
-    @RequiredArgsConstructor
-    public enum Type {
-        TD1(1, "TD1"),
-        TD2(2, "TD2"),
-        TD3(3, "TD3"),
-        MRP(4, "MRP");
-        private final int code;
-        private final String value;
-    }
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
@@ -119,4 +110,37 @@ public class IdentityDocument extends LifecycleIdentityEntity {
     @Column(name = "is_active", nullable = false, columnDefinition = "boolean default true")
     @Builder.Default
     private boolean active = true;
+
+    @Getter
+    @RequiredArgsConstructor
+    public enum Type {
+        TD1(1, "TD1"),
+        TD2(2, "TD2"),
+        TD3(3, "TD3"),
+        MRP(4, "MRP");
+        private final int code;
+        private final String value;
+
+        public static Type fromValue(String value) {
+            if (value == null) return null;
+            try {
+                return Type.valueOf(value);
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
+    }
+
+    @Converter(autoApply = true)
+    public static class TypeConverter implements AttributeConverter<Type, String> {
+        @Override
+        public String convertToDatabaseColumn(Type attribute) {
+            return attribute == null ? null : attribute.name();
+        }
+
+        @Override
+        public Type convertToEntityAttribute(String dbData) {
+            return Type.fromValue(dbData);
+        }
+    }
 }

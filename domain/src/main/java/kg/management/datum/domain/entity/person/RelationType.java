@@ -1,6 +1,7 @@
 package kg.management.datum.domain.entity.person;
 
 import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.CheckConstraint;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -18,7 +19,7 @@ import org.hibernate.envers.Audited;
 @Audited
 @Entity
 @Table(name = "relation_type")
-@AttributeOverride(name = "id", column = @Column(name = "code", length = 50, nullable = false,
-        columnDefinition = "VARCHAR(50) CHECK (code ~ '^[A-Z_]+$' AND length(code) BETWEEN 3 AND 50)"))
+@AttributeOverride(name = "id", column = @Column(name = "code", nullable = false, length = 50,
+        check = @CheckConstraint(constraint = "code ~ '^[A-Z_]+$' AND length(code) BETWEEN 3 AND 50")))
 public class RelationType extends LocalizedEntity<String> {
 }
