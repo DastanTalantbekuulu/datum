@@ -45,7 +45,6 @@
 
         <jooq.version>3.20.10</jooq.version> <!-- Dec 5, 2025 -->
         <jooq-codegen.version>3.20.9</jooq-codegen.version> <!-- Nov 11, 2025 -->
-        <mapstruct.extensions.spring.version>2.0.0</mapstruct.extensions.spring.version> <!-- Nov 18, 2025 -->
 
         <openfga-starter.version>0.2.0</openfga-starter.version> <!-- Mar 18, 2025 -->
         <lombok.version>1.18.42</lombok.version> <!-- Sep 18, 2025 -->
@@ -117,17 +116,6 @@
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen</artifactId>
                 <version>${jooq-codegen.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mapstruct.extensions.spring</groupId>
-                <artifactId>mapstruct-spring-annotations</artifactId>
-                <version>${mapstruct.extensions.spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mapstruct.extensions.spring</groupId>
-                <artifactId>mapstruct-spring-extensions</artifactId>
-                <version>${mapstruct.extensions.spring.version}</version>
             </dependency>
 
             <dependency>
@@ -262,11 +250,6 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <annotationProcessorPaths>
-                            <path>
-                                <groupId>org.mapstruct.extensions.spring</groupId>
-                                <artifactId>mapstruct-spring-extensions</artifactId>
-                                <version>${mapstruct.extensions.spring.version}</version>
-                            </path>
                             <path>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
