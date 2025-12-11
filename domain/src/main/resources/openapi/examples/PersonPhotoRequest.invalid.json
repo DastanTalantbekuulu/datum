@@ -1,8 +1,0 @@
-{
-  "_storageFileId": "ERROR: ID must be a positive number (@Positive)",
-  "storageFileId": -100,
-  "_type": "ERROR: Does not match pattern [A-Z_]+",
-  "type": "avatar",
-  "_primary": "ERROR: Field cannot be null (@NotNull)",
-  "primary": null
-}

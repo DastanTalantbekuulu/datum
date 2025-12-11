@@ -1,9 +1,0 @@
-{
-  "code": "FACE_ISO",
-  "description": "ISO standard biometric face photograph",
-  "i18n": {
-    "en": "Face (ISO)",
-    "kg": "Бет (ISO)",
-    "ru": "Лицо (ISO)"
-  }
-}

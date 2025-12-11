@@ -1,9 +1,0 @@
-{
-  "address": "john.doe.example.com"
-}
-{
-  "address": ""
-}
-{
-  "address": "very.long.email.address.that.exceeds.the.maximum.allowed.length.of.two.hundred.and.fifty.five.characters.and.should.therefore.trigger.a.validation.error.from.the.server@example.com"
-}

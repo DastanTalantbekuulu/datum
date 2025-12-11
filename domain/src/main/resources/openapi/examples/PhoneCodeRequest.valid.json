@@ -1,8 +1,0 @@
-{
-  "countryId": 117,
-  "prefix": "996",
-  "mask": "(###) ##-##-##",
-  "emoji": "🇰🇬",
-  "regex": "^\\+996\\d{9}$",
-  "isMain": true
-}

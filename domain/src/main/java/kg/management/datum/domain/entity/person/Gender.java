@@ -7,9 +7,9 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import kg.management.datum.domain.entity.base.RichLocalizedEntity;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
@@ -19,15 +19,20 @@ import org.hibernate.envers.Audited;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @SuperBuilder
 @Table(name = "gender")
 @AttributeOverride(name = "id", column = @Column(name = "code", length = 1, nullable = false, columnDefinition = "char(1) CHECK (code IN ('M', 'F', 'X'))"))
 @AttributeOverride(name = "extendI18n", column = @Column(name = "short_i18n", columnDefinition = "jsonb", nullable = false))
 public class Gender extends RichLocalizedEntity<Gender.Code> {
 
-    public enum Code  {
-        M, F, X
+    @Getter
+    @RequiredArgsConstructor
+    public enum Code {
+        M(1, 'M'),
+        F(2, 'F'),
+        X(3, 'X');
+        private final int code;
+        private final char value;
     }
 
     @Override

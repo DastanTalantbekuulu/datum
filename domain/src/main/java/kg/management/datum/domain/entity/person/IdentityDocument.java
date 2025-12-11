@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -43,11 +44,15 @@ import java.time.LocalDate;
 @SQLRestriction("deleted_at IS NULL")
 public class IdentityDocument extends LifecycleIdentityEntity {
 
+    @Getter
+    @RequiredArgsConstructor
     public enum Type {
-        TD1,
-        TD2,
-        TD3,
-        MRP,
+        TD1(1, "TD1"),
+        TD2(2, "TD2"),
+        TD3(3, "TD3"),
+        MRP(4, "MRP");
+        private final int code;
+        private final String value;
     }
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

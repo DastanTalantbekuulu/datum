@@ -1,8 +1,0 @@
-{
-  "_relativeId": "ERROR: ID must be a positive number (@Positive)",
-  "relativeId": 0,
-  "_relationType": "ERROR: Field cannot be empty (@NotBlank)",
-  "relationType": "",
-  "_biological": "ERROR: Incompatible type. Expected Boolean, not String",
-  "biological": "yes"
-}
