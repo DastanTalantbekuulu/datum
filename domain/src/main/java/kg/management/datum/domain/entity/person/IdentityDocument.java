@@ -3,43 +3,62 @@ package kg.management.datum.domain.entity.person;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import kg.management.datum.domain.entity.base.AbstractAuditFull;
-import kg.management.datum.domain.entity.dictionary.Gender;
-import kg.management.datum.domain.entity.geo.Country;
+import jakarta.persistence.UniqueConstraint;
+import kg.management.datum.domain.entity.address.Country;
+import kg.management.datum.domain.entity.base.LifecycleIdentityEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.envers.Audited;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "identity_document")
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@SQLDelete(sql = "UPDATE identity_document SET deleted_at = NOW() WHERE id = ?")
-@SQLRestriction("deleted_at IS NULL")
 @Audited
-public class IdentityDocument extends AbstractAuditFull<Long> {
+@Entity
+@Table(name = "identity_document", indexes = {@Index(name = "idx_identity_doc_number", columnList = "doc_number"),
+        @Index(name = "idx_identity_mrz_doc_number", columnList = "mrz_doc_number")},
+        uniqueConstraints = @UniqueConstraint(name = "uq_id_doc", columnNames = {"issuing_country_id", "type", "doc_number", "deleted_at"}))
+@SQLDelete(sql = "UPDATE identity_document SET deleted_at = current_timestamp WHERE id = ?")
+@SQLRestriction("deleted_at IS NULL")
+public class IdentityDocument extends LifecycleIdentityEntity {
+
+    public enum Type {
+        TD1,
+        TD2,
+        TD3,
+        MRP,
+    }
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ToString.Exclude
     private Person person;
 
-    @Column(name = "document_type", nullable = false, length = 2)
-    private String documentType; // P, I, V
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false, length = 3)
+    private Type type;
 
     @Column(name = "doc_number", nullable = false, length = 50)
     private String docNumber;
@@ -53,18 +72,13 @@ public class IdentityDocument extends AbstractAuditFull<Long> {
     @Column(name = "issue_date", nullable = false)
     private LocalDate issueDate;
 
+    @Column(name = "expiry_date")
+    private LocalDate expiryDate;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "issuing_country_id", nullable = false)
+    @ToString.Exclude
     private Country issuingCountry;
-
-    @Column(name = "mrz_string_1", length = 44)
-    private String mrzString1;
-
-    @Column(name = "mrz_string_2", length = 44)
-    private String mrzString2;
-
-    @Column(name = "mrz_string_3", length = 30)
-    private String mrzString3;
 
     @Column(name = "mrz_surname", length = 100)
     private String mrzSurname;
@@ -78,7 +92,7 @@ public class IdentityDocument extends AbstractAuditFull<Long> {
     @Column(name = "mrz_birth_date")
     private LocalDate mrzBirthDate;
 
-    @Column(name = "mrz_expiry_date", nullable = false)
+    @Column(name = "mrz_expiry_date")
     private LocalDate mrzExpiryDate;
 
     @Column(name = "mrz_personal_number", length = 20)
@@ -86,10 +100,12 @@ public class IdentityDocument extends AbstractAuditFull<Long> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mrz_sex_code")
+    @ToString.Exclude
     private Gender mrzSex;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mrz_nationality_id")
+    @ToString.Exclude
     private Country mrzNationality;
 
     @Column(name = "is_primary", nullable = false, columnDefinition = "boolean default false")
