@@ -16,9 +16,16 @@ CREATE TABLE role
 CREATE TABLE language
 (
     language   CHAR(2) PRIMARY KEY,
-    native     VARCHAR(50) NOT NULL,
-    i18n       JSONB       NOT NULL DEFAULT '{}',
-    updated_at TIMESTAMPTZ
+    iso_639_2  CHAR(3)      NULL,
+    iso_639_3  CHAR(3)      NULL,
+    name_en    VARCHAR(100) NOT NULL,
+    native     VARCHAR(100) NOT NULL,
+    direction  CHAR(3)      NOT NULL DEFAULT 'LTR'  CHECK (direction IN ('LTR', 'RTL')),
+    is_active  BOOLEAN      NOT NULL DEFAULT TRUE,
+    flag_emoji VARCHAR(10)  NULL,
+    script     CHAR(4)      NULL,
+    i18n       JSONB        NOT NULL DEFAULT '{}',
+    updated_at TIMESTAMPTZ  NULL
 );
 
 CREATE TABLE gender

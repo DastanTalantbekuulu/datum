@@ -1,4 +1,4 @@
-package kg.management.datum.domain.constants;
+package kg.management.datum.domain.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

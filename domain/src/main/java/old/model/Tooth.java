@@ -2,9 +2,9 @@
 //
 //import io.swagger.v3.oas.annotations.media.Schema;
 //import jakarta.persistence.*;
-//import kg.management.datum.domain.constants.ToothCondition;
-//import kg.management.datum.domain.constants.ToothMobility;
-//import kg.management.datum.domain.constants.ToothNumber;
+//import kg.management.datum.domain.enums.ToothCondition;
+//import kg.management.datum.domain.enums.ToothMobility;
+//import kg.management.datum.domain.enums.ToothNumber;
 //import lombok.AllArgsConstructor;
 //import lombok.Builder;
 //import lombok.Data;
