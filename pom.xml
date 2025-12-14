@@ -14,15 +14,18 @@
     <version>0.0.1</version>
     <name>datum</name>
 
-    <description>Dental clinic management</description>
     <packaging>pom</packaging>
 
     <modules>
         <module>api</module>
+        <module>common</module>
+        <module>dictionary</module>
         <module>domain</module>
+        <module>finance</module>
+        <module>identity</module>
         <module>security</module>
         <module>service</module>
-        <module>support</module>
+        <module>storage</module>
     </modules>
     <properties>
         <project.version>0.0.1</project.version>

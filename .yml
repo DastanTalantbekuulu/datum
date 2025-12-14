@@ -1,0 +1,23 @@
+dictionaries:
+  # Описание справочника "Страны"
+  country:
+    fields:
+      iso_alpha2: { type: "string", constraints: [ "unique", "not_null" ] }
+      iso_alpha3: { type: "string", constraints: [ "unique", "not_null" ] }
+      is_active: { type: "boolean", default: true }
+      i18n: { type: "json" }
+      updated_at: { type: "datetime" }
+
+  # Описание справочника "Роли"
+  role:
+    fields:
+      role: { type: "string", constraints: [ "primary_key", "not_null" ] }
+      i18n: { type: "json" }
+      description_i18n: { type: "json" }
+      updated_at: { type: "datetime" }
+
+  # Описание справочника "Тексты для UI"
+  label:
+    fields:
+      key: { type: "string", constraints: [ "primary_key", "not_null" ] }
+      value: { type: "json" } # { "en": "Save", "ru": "Сохранить" }

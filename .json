@@ -1,0 +1,80 @@
+{
+  "version": "2023-10-27T12:30:00Z",
+  "generated_at": "2023-10-27T12:30:05Z",
+  "data": {
+    "country": {
+      "US": {
+        "id": 1,
+        "iso_alpha2": "US",
+        "i18n": {
+          "en": "United States",
+          "ru": "Соединенные Штаты"
+        }
+      }
+    },
+    "currency": {},
+    "gender": {
+      "M": {
+        "code": "M",
+        "i18n": {
+          "en": "Male",
+          "ru": "Мужской"
+        }
+      }
+    },
+    "role": {
+      "ADMIN": {
+        "i18n": {
+          "en": "Admin",
+          "ru": "Администратор"
+        }
+      },
+      "USER": {
+        "i18n": {
+          "en": "User",
+          "ru": "Пользователь"
+        }
+      }
+    },
+
+    "label": {
+      "user.save.success": {
+        "i18n": {
+          "en": "User saved successfully!",
+          "ru": "Пользователь успешно сохранен!"
+        }
+      },
+      "error.validation.required": {
+        "i18n": {
+          "en": "This field is required.",
+          "ru": "Это поле обязательно для заполнения."
+        }
+      },
+      "button.save": {
+        "i18n": {
+          "en": "Save",
+          "ru": "Сохранить"
+        }
+      }
+    },
+
+    "validation": {
+      "username": {
+        "regex": "^[a-zA-Z0-9_]{3,20}$",
+        "message": ""
+      },
+      "phone_number": {
+        "regex": "^[0-9]{4,15}$",
+        "message": ""
+      }
+    }
+  }
+}
+
+country, currency, region, city
+language, gender, role
+contact_type, relation_type, photo_type
+Что еще можно добавить:
+document_type: Типы документов (Паспорт, Водительское удостоверение, Загранпаспорт).
+marital_status: Семейное положение (Холост/Не замужем, Женат/Замужем).
+education_level: Уровень образования (Среднее, Высшее, PhD).

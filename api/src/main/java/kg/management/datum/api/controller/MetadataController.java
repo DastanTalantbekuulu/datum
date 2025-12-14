@@ -7,8 +7,8 @@
 //import kg.management.datum.domain.entity.user.User;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RestController;
-//import support.model.EntityConfig;
-//import support.model.FieldConfig;
+//import kg.management.common.model.EntityConfig;
+//import kg.management.common.model.FieldConfig;
 //
 //import java.lang.reflect.Field;
 //import java.time.LocalDate;
